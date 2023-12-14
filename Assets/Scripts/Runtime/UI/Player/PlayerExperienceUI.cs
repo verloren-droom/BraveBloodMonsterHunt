@@ -31,7 +31,7 @@ namespace BraveBloodMonsterHunt
 
         public void UpdateLevelTextUI()
         {
-            levelText.text = "等级：" + playerExperienceSystem.Level.ToString();
+            levelText.text = "LV" + playerExperienceSystem.Level.ToString();
         }
     }
 }

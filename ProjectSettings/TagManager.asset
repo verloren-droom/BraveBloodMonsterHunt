@@ -9,13 +9,13 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Confiner
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - Missile
+  - Wall
   - 
   - 
   - 
@@ -48,12 +48,18 @@ TagManager:
   - name: Water_Props
     uniqueID: 3279687029
     locked: 0
-  - name: Land
+  - name: Floor
     uniqueID: 2052687701
     locked: 0
-  - name: Land_Props
-    uniqueID: 3449572667
+  - name: Wall
+    uniqueID: 4045153361
     locked: 0
   - name: Character
     uniqueID: 2875885647
+    locked: 0
+  - name: PropAndDrop
+    uniqueID: 474124215
+    locked: 0
+  - name: UI
+    uniqueID: 3953489105
     locked: 0

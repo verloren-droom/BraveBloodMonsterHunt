@@ -53,8 +53,7 @@ namespace BraveBloodMonsterHunt
             {
                 targetPos = m_Target.transform.position;
             }
-            m_MoveDirection = targetPos - (Vector2)transform.position;
-            m_MoveDirection.Normalize();
+            m_MoveDirection = (targetPos - (Vector2)transform.position).normalized;
             
             transform.rotation = Quaternion.LookRotation(transform.forward, m_MoveDirection);
         }
@@ -64,6 +63,16 @@ namespace BraveBloodMonsterHunt
             var targetPosition = (Vector2)transform.position + m_MoveDirection;
             
             rb.DOMove(targetPosition, moveSpeed).SetSpeedBased();
+        }
+        
+        private void OnDisable()
+        {
+            rb.DOKill();
+        }
+
+        private void OnDestroy()
+        {
+            rb.DOKill();
         }
 
         private void OnDrawGizmos()

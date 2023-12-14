@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Timers;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -19,6 +20,13 @@ namespace BraveBloodMonsterHunt
         [SerializeField, Min(0)] private float interval = 0.05f;
 
         private ObjectPool<GameObject> m_FloatingTextPool;
+
+        public enum ColorStyle
+        {
+            None,
+            IncreaseHealth,
+            DecreaseHealth,
+        }
 
         protected override void Awake()
         {
@@ -47,14 +55,38 @@ namespace BraveBloodMonsterHunt
             Destroy(obj);
         }
 
-        public void GetFloatingText(string text, Vector2 targetPosition)
+        public void GetFloatingText(string text, Vector2 targetPosition, ColorStyle colorStyle = ColorStyle.None)
         {
             var textObj = m_FloatingTextPool.Get();
             textObj.transform.position = targetPosition;
 
             if (textObj.TryGetComponent<FloatingText>(out var ft))
             {
-                ft.FlyTo(text, targetPosition, duration, interval);
+                VertexGradient colorGradient = default;
+                
+                switch (colorStyle)
+                {
+                    case ColorStyle.IncreaseHealth:
+                        colorGradient = new VertexGradient()
+                        {
+                            topLeft = Color.white,
+                            topRight = Color.white,
+                            bottomLeft = Color.green,
+                            bottomRight = Color.green,
+                        };                    
+                        break;
+                    case ColorStyle.DecreaseHealth:
+                        colorGradient = new VertexGradient()
+                        {
+                            topLeft = Color.white,
+                            topRight = Color.white,
+                            bottomLeft = Color.red,
+                            bottomRight = Color.red,
+                        };
+                        break;
+                }
+                
+                ft.FlyTo(text, targetPosition, colorGradient, duration, interval);
             }
 
             TimersManager.SetTimer(this, duration * 2 + interval, () =>

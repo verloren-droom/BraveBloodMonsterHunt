@@ -10,11 +10,22 @@ namespace BraveBloodMonsterHunt.UI
         [SerializeField, Required] private TextMeshProUGUI clockText;
         [SerializeField] private bool isEnableTimer = true;
 
+        [ShowNonSerializedField] private float currentTimer;
+
+        /// <summary>
+        /// set is enable clock timer
+        /// </summary>
+        /// <param name="enable">true -> enable timer, false => disable timer</param>
         public void SetIsEnableTimer(bool enable)
         {
             isEnableTimer = enable;
         }
         
+        /// <summary>
+        /// update timer
+        /// </summary>
+        /// <param name="time"></param>
+        /// <returns></returns>
         private string UpdateTimer(float time)
         {
             int minutes = Mathf.FloorToInt(time / 60);
@@ -27,8 +38,17 @@ namespace BraveBloodMonsterHunt.UI
         {
             if (isEnableTimer)
             {
-                clockText.text = UpdateTimer(Time.time);
+                currentTimer += Time.deltaTime;
+                clockText.text = UpdateTimer(currentTimer);
             }
+        }
+
+        /// <summary>
+        /// reset timer
+        /// </summary>
+        public void ResetTimer()
+        {
+            currentTimer = 0.0f;
         }
     }
 }

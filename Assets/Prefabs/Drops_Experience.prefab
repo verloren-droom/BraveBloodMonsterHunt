@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3182770195470076762}
   - component: {fileID: 3182770195470076758}
   - component: {fileID: 3182770195470076757}
-  - component: {fileID: -5454820886153246384}
   m_Layer: 0
   m_Name: Drops_Experience
   m_TagString: Untagged
@@ -74,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 474124215
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: -20174181, guid: ce6780b756b4e43a9847b5b4428231bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -137,27 +136,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0856597252ba24361b17cd9f6a3659f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggerMode: 0
+  isDestroy: 1
+  triggerTag: Player
+  onEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
   itemType: 1
   minMaxHealthValue: {x: 20, y: 30}
   minMaxExperienceValue: {x: 15, y: 30}
-  triggerMode: 0
-  isDestroy: 1
-  itemTag: Player
-  onEnter:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &-5454820886153246384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3182770195470076761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca620deddae04590987d3ef6717793b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  map: {fileID: 0}
-  floorTile: {fileID: 0}
-  seed: 666
